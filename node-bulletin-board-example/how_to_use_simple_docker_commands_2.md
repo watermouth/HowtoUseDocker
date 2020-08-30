@@ -66,15 +66,18 @@ node:current-slimというimageも作成されているが, これはDockerfile�
 downloadしただけである.
 
 ``` bash
+
     $ docker images
     REPOSITORY                  TAG                 IMAGE ID            CREATED              SIZE
     bulletinboard               1.0                 a9d8d2ffceb8        About a minute ago   183MB
     node                        current-slim        05f62d57259e        32 hours ago         167MB
+
 ```
 
 ### 2. run the image
 
 ``` bash
+
     $ docker run --publish 8000:8080 --detach --name bb bulletinboard:1.0
     $ docker ps -a
     CONTAINER ID        IMAGE                       COMMAND                  CREATED             STATUS                      PORTS                    NAMES
@@ -84,6 +87,7 @@ downloadしただけである.
     $ docker ps # bb is running
     CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
     a97acf34508d        bulletinboard:1.0   "docker-entrypoint.s…"   7 minutes ago       Up 7 minutes        0.0.0.0:8000->8080/tcp   bb
+
 ```
 
 - --publish : host(dockerを動かしているもの)のポート番号:conainer内のport number hostのport番号に来るデータをcontainer の port 番号に転送する. forward traffic incoming on the host’s port 8000 to the container’s port 8080.
@@ -93,7 +97,7 @@ downloadしただけである.
 web browser にて localhost:8000 にアクセスするとbulletinboard アプリを利用できる.
 試しにデータを追加する.
 
-``` 3. stop and run the container 
+### 3. stop and run the container 
 
 ``` bash
     docker stop bb
@@ -103,7 +107,7 @@ web browser にて localhost:8000 にアクセスするとbulletinboard アプ�
 
 先ほど登録したデータが消えていることを確認できる.
 
-``` 4. remove the container
+### 4. remove the container
 
 ``` bash
     docker rm --force bb
