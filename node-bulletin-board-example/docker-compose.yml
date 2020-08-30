@@ -1,0 +1,5 @@
+version: '3'
+services:
+    bb:
+        build: .
+        ports: [8000:8080] # array で指定しないとダメらしい. version 3だからか?
